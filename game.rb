@@ -1,6 +1,15 @@
 require "./dice"
 
 class Player
+  # attr_reader :dice
+
+  def initialize name, dice
+    @dice = dice
+  end
+
+  def dice
+    @dice
+  end
 end
 
 
