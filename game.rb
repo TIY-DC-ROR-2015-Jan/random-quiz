@@ -4,7 +4,7 @@ class Player
   # attr_reader :dice
 
   def initialize name, dice
-    @dice = dice
+    @name, @dice = name, dice
   end
 
   def dice
@@ -13,6 +13,10 @@ class Player
 
   def roll
     @dice.roll
+  end
+
+  def to_s
+    @name
   end
 end
 
@@ -64,10 +68,13 @@ if $PROGRAM_NAME == __FILE__ # Ignore this bit for now, we'll talk about it afte
     name.gsub! cheat_code, ""
 
     dice = cheating ? LoadedDice.new : Dice.new
-    Player.new dice
+    Player.new name, dice
   end
 
   p1 = get_player 1
   p2 = get_player 2
-  Game.new(p1, p2).play!
+
+  g = Game.new p1, p2
+  g.play!
+  puts "#{g.winner} won!"
 end
