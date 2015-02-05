@@ -22,6 +22,7 @@ class Game
     # @p1, @p2 = p1, p2
     @p1 = p1
     @p2 = p2
+    @turn = 1
     # @winner = nil
   end
 
@@ -36,12 +37,19 @@ class Game
         @winner = @p1
       elsif p1_roll < p2_roll
         @winner = @p2
+      else
+        @turn += 1
+        # Go again
       end
     end
   end
 
   def winner
     @winner
+  end
+
+  def turn
+    @turn
   end
 end
 
