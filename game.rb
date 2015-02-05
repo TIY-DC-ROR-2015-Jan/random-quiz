@@ -36,6 +36,7 @@ class Game
       # both players roll
       p1_roll = @p1.roll # or @p1.dice.roll
       p2_roll = @p2.roll
+      puts "#{p1_roll}  |  #{p2_roll}"
       # compare, if someone won, we save as @winner
       if p1_roll > p2_roll
         @winner = @p1
