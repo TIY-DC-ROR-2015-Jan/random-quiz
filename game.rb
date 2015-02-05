@@ -10,11 +10,39 @@ class Player
   def dice
     @dice
   end
+
+  def roll
+    @dice.roll
+  end
 end
 
 
 class Game
-  # Players roll their dice until someone wins
+  def initialize p1,p2
+    # @p1, @p2 = p1, p2
+    @p1 = p1
+    @p2 = p2
+    # @winner = nil
+  end
+
+  def play!
+    # Needs to set @winner
+    until @winner # we have a winner
+      # both players roll
+      p1_roll = @p1.roll # or @p1.dice.roll
+      p2_roll = @p2.roll
+      # compare, if someone won, we save as @winner
+      if p1_roll > p2_roll
+        @winner = @p1
+      elsif p1_roll < p2_roll
+        @winner = @p2
+      end
+    end
+  end
+
+  def winner
+    @winner
+  end
 end
 
 
