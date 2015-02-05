@@ -31,12 +31,14 @@ class Game
   end
 
   def play!
+    log = []
+
     # Needs to set @winner
     until @winner # we have a winner
       # both players roll
       p1_roll = @p1.roll # or @p1.dice.roll
       p2_roll = @p2.roll
-      puts "#{p1_roll}  |  #{p2_roll}"
+      log.push [p1_roll, p2_roll]
       # compare, if someone won, we save as @winner
       if p1_roll > p2_roll
         @winner = @p1
@@ -47,6 +49,8 @@ class Game
         # Go again
       end
     end
+
+    log
   end
 
   def winner
@@ -76,6 +80,9 @@ if $PROGRAM_NAME == __FILE__ # Ignore this bit for now, we'll talk about it afte
   p2 = get_player 2
 
   g = Game.new p1, p2
-  g.play!
+  results = g.play!
+  results.each do |r1,r2|
+    puts "Player 1: #{r1}, Player 2: #{r2}"
+  end
   puts "#{g.winner} won!"
 end
